@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./Navbar.scss";
 import Netflix from "../images/Netflix_Logo_PMS.png";
 import picture from "../images/megan.jpg";
 import Search from "@mui/icons-material/Search";
@@ -25,23 +24,21 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`navbar w-full z-20 fixed top-0 text-white text-lg  ${
-        isScrolled ? "bg-black bg-opacity-" : "bg-custom-gradient"
-      }`}
+      className={`navbar w-full z-10 fixed top-0 text-white text-lg 
+        ${isScrolled ? "bg-black bg-opacity-90" : "bg-custom-gradient"}`}
     >
       <div className="container mx-auto p-3 flex items-center justify-between">
-        <div className="left flex items-center space-x-6">
+        <div className="left flex items-center space-x-6 overflow-x-auto">
           <img className="h-16" src={Netflix} alt="Netflix Logo" />
-          <span>Homepage</span>
-          <span>Series</span>
-          <span>Movies</span>
-          <span>New and popular</span>
-          <span>My List</span>
+          <span className="hidden md:block">Homepage</span>
+          <span className="hidden md:block">Series</span>
+          <span className="hidden md:block">Movies</span>
+          <span className="hidden md:block">New and popular</span>
+          <span className="hidden md:block">My List</span>
         </div>
         <div className="right flex items-center ml-auto">
-          {" "}
           <Search className="cursor-pointer" />
-          <span className="ml-4">KID</span> {/* Added ml-4 for spacing */}
+          <span className="ml-4 hidden md:block">KID</span>
           <Notifications className="ml-4 cursor-pointer" />
           <img
             className="w-8 h-8 object-cover cursor-pointer rounded-lg ml-4"
@@ -49,9 +46,8 @@ const Navbar = () => {
             alt="Profile"
           />
           <div className="profile relative">
-            {" "}
             <ArrowDropDown
-              className=" icon ml-4 cursor-pointer"
+              className="icon ml-4 cursor-pointer"
               onClick={toggleDropDown}
             />
             {open && (
